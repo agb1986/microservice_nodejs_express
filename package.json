@@ -1,0 +1,27 @@
+{
+    "name": "microservice_nodejs_express",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/agb1986/microservice_nodejs_express.git"
+    },
+    "author": "agb1986",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/agb1986/microservice_nodejs_express/issues"
+    },
+    "homepage": "https://github.com/agb1986/microservice_nodejs_express#readme",
+    "dependencies": {
+        "agb-logger": "1.0.2",
+        "express": "4.17.2"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "nodemon": "2.0.15"
+    }
+}
