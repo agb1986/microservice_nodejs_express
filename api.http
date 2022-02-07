@@ -1,0 +1,23 @@
+#################
+# PET
+#################
+
+### 
+GET /pet HTTP/1.1
+Host: localhost:8001
+
+#################
+# STORE
+#################
+
+### 
+GET /store HTTP/1.1
+Host: localhost:8002
+
+#################
+# USER
+#################
+
+### 
+GET /user HTTP/1.1
+Host: localhost:8003

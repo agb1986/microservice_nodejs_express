@@ -1,0 +1,23 @@
+services:
+    pet:
+        build: 
+            context: .
+            dockerfile: packages/pet/docker/Dockerfile
+        image: pet_image
+        ports:
+            - 8001:8001
+    store:
+        build: 
+            context: .
+            dockerfile: packages/store/docker/Dockerfile
+        image: store_image
+        ports:
+            - 8002:8002
+    user:
+        build: 
+            context: .
+            dockerfile: packages/user/docker/Dockerfile
+        image: user_image
+        ports:
+            - 8003:8003
+        

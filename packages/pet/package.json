@@ -1,0 +1,19 @@
+{
+    "name": "pet",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/server.js",
+    "scripts": {
+        "start": "node dist/server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "agb-logger": "1.0.2",
+        "express": "4.17.2"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "nodemon": "2.0.15"
+    }
+}
