@@ -20,4 +20,3 @@ services:
         image: user_image
         ports:
             - 8003:8003
-        

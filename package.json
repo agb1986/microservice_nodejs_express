@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "pet": "npm --prefix packages/pet/ run dev",
+        "store": "npm --prefix packages/store/ run dev",
+        "user": "npm --prefix packages/user/ run dev"
     },
     "repository": {
         "type": "git",

@@ -4,7 +4,7 @@ RUN npm install -g typescript
 
 WORKDIR /usr/app
 
-COPY /packages/store/ /usr/app/
+COPY /packages/user/ /usr/app/
 
 RUN npm install
 RUN tsc
