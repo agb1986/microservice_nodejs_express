@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "pet": "npm --prefix packages/pet/ run dev",
+        "pet-build": "npm --prefix packages/pet/ install",
         "store": "npm --prefix packages/store/ run dev",
         "user": "npm --prefix packages/user/ run dev"
     },
@@ -20,7 +21,9 @@
     "homepage": "https://github.com/agb1986/microservice_nodejs_express#readme",
     "dependencies": {
         "agb-logger": "1.0.2",
-        "express": "4.17.2"
+        "express": "4.17.2",
+        "inversify": "6.0.1",
+        "reflect-metadata": "0.1.13"
     },
     "devDependencies": {
         "@types/express": "^4.17.13",

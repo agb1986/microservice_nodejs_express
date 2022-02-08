@@ -1,14 +1,24 @@
-import { Request, Response } from 'express';
-import IPet from '../models/pet.model';
+import "reflect-metadata";
+import { Application, NextFunction, Request, Response } from 'express';
+import { inject, injectable } from 'inversify';
+import { RegistrableController } from "./registrable.controller ";
+import { PetService } from "../services/pet.service";
+import TYPES from "../configs/types.config";
 
-class PetController {
-    public static getPet(req: Request, res: Response): Response<IPet> {
-        const pet: IPet = {
-            id: 0,
-            name: "Dogo"
-        }
-        
-        return res.send(pet);
+@injectable()
+class PetController implements RegistrableController {
+    private petService!: PetService;
+
+    constructor(@inject(TYPES.PetService) petService: PetService) {
+        this.petService = petService;
+    }
+
+    register(app: Application): void {
+        app.route('/pet')
+            .get(async (req: Request, res: Response, next: NextFunction) => {
+                const pets = await this.petService.getPets();
+                res.send(pets);
+            })
     }
 }
 

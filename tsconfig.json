@@ -1,13 +1,28 @@
 {
-  "include": ["packages"],
-  "exclude": ["**/node_modules/**", "packages/*/dist/**", "**/*.d.ts"],
+  "include": [
+      "."
+  ],
+  "exclude": [
+      "**/node_modules/**",
+      "packages/*/dist/**",
+      "**/*.d.ts"
+  ],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "outDir": "./dist/"
+      "target": "esnext",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "outDir": "./dist/",
+      "lib": [
+          "es6"
+      ],
+      "types": [
+          "reflect-metadata"
+      ],
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "moduleResolution": "node"
   }
 }

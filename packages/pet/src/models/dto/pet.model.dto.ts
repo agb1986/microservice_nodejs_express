@@ -1,4 +1,4 @@
-interface IPet {
+interface Pet {
     id: number;
     name: string;
     status?: Status
@@ -17,9 +17,9 @@ interface ITags {
     name: string;
 }
 
-enum Status {
+export enum Status {
     AVAILABLE,
     UNAVAILABLE
 }
 
-export default IPet;
+export default Pet;
