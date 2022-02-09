@@ -1,6 +1,6 @@
 # Microservice - Pet Store
 
-Using the Swagger editor pet store example specification, this repo contains microservices built with NodeJs/Express/Typescript.
+Using the Swagger editor pet store example specification, this repo contains microservices built with NodeJs/Express/MongoDB/Typescript.
 
 ## Docker Commands
 
@@ -11,6 +11,8 @@ Pet Image - `docker build -t pet_image -f ./packages/pet/docker/Dockerfile .`
 Store Image - `docker build -t store_image -f ./packages/store/docker/Dockerfile .`
 
 User Image - `docker build -t user_image -f ./packages/user/docker/Dockerfile .`
+
+Mongo Image - `docker build -t mongo_image -f ./packages/user/docker/Dockerfile .`
 
 ## Random JSON Data
 
