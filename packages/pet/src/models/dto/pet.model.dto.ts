@@ -1,5 +1,5 @@
 interface Pet {
-    id: number;
+    _id: number;
     name: string;
     status?: Status
     photos?: string[];
@@ -7,12 +7,12 @@ interface Pet {
     tags?: ITags[]
 }
 
-interface ICategory {
+export interface ICategory {
     id: number;
     name: string;
 }
 
-interface ITags {
+export interface ITags {
     id: number;
     name: string;
 }

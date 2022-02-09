@@ -5,6 +5,7 @@ import process from 'process';
 import { injectable } from "inversify";
 
 import Pet from "../dto/pet.model.dto";
+import { mongoDatabase } from "../mongo/pet.mongo";
 
 export interface PetRepository {
     findAll(): Promise<Array<Pet>>;
@@ -16,24 +17,14 @@ export interface PetRepository {
 
 const Logger = require('agb-logger');
 
-// TODO: Replace with DB
-const petDataFilePath: string = path.resolve(process.cwd(), '/data/pet.json');
-
 @injectable()
 export class PetDao implements PetRepository {
-    public async findAll(): Promise<Pet[]> {
-        let petData!: Pet[];
-
-        await fs.readFile(petDataFilePath, 'utf8')
-            .then(data => {
-                Logger.info(`Fetching Pet Data: ${data.length}`);
-                petData = JSON.parse(data);
-            }).catch(err => {
-                Logger.error(`Unable to Fetch Pet Data: ${err}`);
-                throw err;
-            });
-
-        return petData;
+    public async findAll(): Promise<Array<Pet>> {
+        Logger.info('Getting Pets Data')
+        const pets = await mongoDatabase.connect()
+            .then(() => mongoDatabase.Pets.find());
+        Logger.info('Returning Pets Data')
+        return pets.toArray();
     }
     public async find(id: string): Promise<Pet> {
         throw new Error("Method not implemented.");
