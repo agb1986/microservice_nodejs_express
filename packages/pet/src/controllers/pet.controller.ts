@@ -21,7 +21,15 @@ class PetController implements RegistrableController {
                 Logger.info("GET @ /pet being executed")
                 const pets = await this.petService.getPets();
                 res.send(pets);
-            })
+            });
+
+        app.route('/pet/:id')
+            .get(async (req: Request, res: Response, next: NextFunction) => {
+                const petId = req.params.id;
+                Logger.info(`GET @ /pet/${petId} being executed`)
+                const pet = await this.petService.getPet(petId);
+                res.send(pet);
+            });
     }
 }
 

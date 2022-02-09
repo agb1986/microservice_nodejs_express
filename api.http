@@ -6,6 +6,10 @@
 GET /pet HTTP/1.1
 Host: localhost:8001
 
+### 
+GET /pet/620400c4c5011400d3ab245f HTTP/1.1
+Host: localhost:8001
+
 #################
 # STORE
 #################

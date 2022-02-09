@@ -21,11 +21,12 @@ export class PetServiceImpl implements PetService {
     private petRepository!: PetRepository;
 
     public async getPets(): Promise<Pet[]> {
-        Logger.info('Service running @ getPets')
+        Logger.info('Service running @ getPets');
         return await this.petRepository.findAll();
     }
     public async getPet(id: string): Promise<Pet> {
-        throw new Error("Method not implemented.");
+        Logger.info(`Service running @ getPet /w ${id}`);
+        return await this.petRepository.find(id);
     }
     public async createPet(pet: Pet): Promise<void> {
         throw new Error("Method not implemented.");

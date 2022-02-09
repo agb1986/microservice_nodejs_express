@@ -1,7 +1,4 @@
 import "reflect-metadata";
-import fs from "fs/promises";
-import path from "path";
-import process from 'process';
 import { injectable } from "inversify";
 
 import Pet from "../dto/pet.model.dto";
@@ -27,7 +24,12 @@ export class PetDao implements PetRepository {
         return pets.toArray();
     }
     public async find(id: string): Promise<Pet> {
-        throw new Error("Method not implemented.");
+        Logger.info(`Getting Pet Data @ ${id}`)
+        const pet = await mongoDatabase.connect()
+            .then(() => mongoDatabase.Pets.findOne(id));
+
+        Logger.info(`Returning Pet Data @ ${pet}`)
+        return pet?.toJSON();
     }
     public async create(pet: Pet): Promise<void> {
         throw new Error("Method not implemented.");
