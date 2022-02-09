@@ -1,5 +1,7 @@
 import "reflect-metadata";
 import fs from "fs/promises";
+import path from "path";
+import process from 'process';
 import { injectable } from "inversify";
 
 import Pet from "../dto/pet.model.dto";
@@ -12,8 +14,10 @@ export interface PetRepository {
     delete(id: string): Promise<void>;
 }
 
+const Logger = require('agb-logger');
+
 // TODO: Replace with DB
-const petDataFilePath: string = '../../data/pet.json';
+const petDataFilePath: string = path.resolve(process.cwd(), '/data/pet.json');
 
 @injectable()
 export class PetDao implements PetRepository {
@@ -22,8 +26,10 @@ export class PetDao implements PetRepository {
 
         await fs.readFile(petDataFilePath, 'utf8')
             .then(data => {
+                Logger.info(`Fetching Pet Data: ${data.length}`);
                 petData = JSON.parse(data);
             }).catch(err => {
+                Logger.error(`Unable to Fetch Pet Data: ${err}`);
                 throw err;
             });
 

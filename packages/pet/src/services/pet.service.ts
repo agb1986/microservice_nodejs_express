@@ -12,6 +12,8 @@ export interface PetService {
     deletePet(id: string): Promise<void>;
 }
 
+const Logger = require('agb-logger');
+
 @injectable()
 export class PetServiceImpl implements PetService {
     
@@ -19,6 +21,7 @@ export class PetServiceImpl implements PetService {
     private petRepository!: PetRepository;
 
     public async getPets(): Promise<Pet[]> {
+        Logger.info('Service running @ getPets')
         return await this.petRepository.findAll();
     }
     public async getPet(id: string): Promise<Pet> {
