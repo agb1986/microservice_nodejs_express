@@ -7,8 +7,79 @@ GET /pet HTTP/1.1
 Host: localhost:8001
 
 ### 
-GET /pet/620400c4c5011400d3ab245f HTTP/1.1
+GET /pet/6207df3b5566cf3204b58713 HTTP/1.1
 Host: localhost:8001
+
+###
+POST /pet HTTP/1.1
+Host: localhost:8001
+Content-Type: application/json
+
+{
+    "name": "POST_TEST",
+    "status": "AVAILABLE",
+    "photos": [
+        "POST_TEST@TEST.TEST",
+        "POST_TEST@TEST.TEST",
+        "POST_TEST@TEST.TEST"
+    ],
+    "category": {
+        "id": 0,
+        "name": "POST_TEST"
+    },
+    "tags": [
+        {
+            "id": 0,
+            "name": "POST_TEST"
+        },
+        {
+            "id": 1,
+            "name": "POST_TEST"
+        },
+        {
+            "id": 2,
+            "name": "POST_TEST"
+        }
+    ]
+}
+
+###
+PUT /pet/6207df1e5566cf3204b58712 HTTP/1.1
+Host: localhost:8001
+Content-Type: application/json
+
+{
+    "name": "PUT_TEST",
+    "status": "AVAILABLE",
+    "photos": [
+        "PUT_TEST@TEST.TEST",
+        "PUT_TEST@TEST.TEST",
+        "PUT_TEST@TEST.TEST"
+    ],
+    "category": {
+        "id": 0,
+        "name": "PUT_TEST"
+    },
+    "tags": [
+        {
+            "id": 0,
+            "name": "PUT_TEST"
+        },
+        {
+            "id": 1,
+            "name": "PUT_TEST"
+        },
+        {
+            "id": 2,
+            "name": "PUT_TEST"
+        }
+    ]
+}
+
+###
+DELETE /pet/6207df3b5566cf3204b58713 HTTP/1.1
+Host: localhost:8001
+Content-Type: application/json
 
 #################
 # STORE

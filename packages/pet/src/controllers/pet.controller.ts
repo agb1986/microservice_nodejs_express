@@ -18,17 +18,35 @@ class PetController implements RegistrableController {
     register(app: Application): void {
         app.route('/pet')
             .get(async (req: Request, res: Response, next: NextFunction) => {
-                Logger.info("GET @ /pet being executed")
+                Logger.info("GET @ /pet being executed");
                 const pets = await this.petService.getPets();
                 res.send(pets);
-            });
+            })
+            .post(async (req: Request, res: Response, next: NextFunction) => {
+                Logger.info("POST @ /pet being executed");
+                const pet = req.body;
+                await this.petService.createPet(pet);
+                res.send("PET CREATED");
+            })
 
         app.route('/pet/:id')
             .get(async (req: Request, res: Response, next: NextFunction) => {
                 const petId = req.params.id;
-                Logger.info(`GET @ /pet/${petId} being executed`)
+                Logger.info(`GET @ /pet/${petId} being executed`);
                 const pet = await this.petService.getPet(petId);
                 res.send(pet);
+            })
+            .put(async (req: Request, res: Response, next: NextFunction) => {
+                const petId = req.params.id;
+                Logger.info(`PUT @ /pet/${petId} being executed`);
+                const pet = req.body;
+                await this.petService.updatePet(petId, pet);
+                res.send(pet);
+            })
+            .delete(async (req: Request, res: Response, next: NextFunction) => {
+                const petId = req.params.id;
+                Logger.info(`DELETE @ /pet/${petId} being executed`);
+                await this.petService.deletePet(petId);
             });
     }
 }

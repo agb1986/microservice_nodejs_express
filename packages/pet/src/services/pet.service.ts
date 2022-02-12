@@ -8,7 +8,7 @@ export interface PetService {
     getPets(): Promise<Array<Pet>>;
     getPet(id: string): Promise<Pet>;
     createPet(pet: Pet): Promise<void>;
-    updatePet(pet: Pet): Promise<void>;
+    updatePet(id: string, pet: Pet): Promise<void>;
     deletePet(id: string): Promise<void>;
 }
 
@@ -29,13 +29,16 @@ export class PetServiceImpl implements PetService {
         return await this.petRepository.find(id);
     }
     public async createPet(pet: Pet): Promise<void> {
-        throw new Error("Method not implemented.");
+        Logger.info("Service running @ createPet");
+        await this.petRepository.create(pet);
     }
-    public async updatePet(pet: Pet): Promise<void> {
-        throw new Error("Method not implemented.");
+    public async updatePet(id: string, pet: Pet): Promise<void> {
+        Logger.info("Service running @ updatePet");
+        await this.petRepository.update(id, pet);
     }
     public async deletePet(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+        Logger.info("Service running @ deletePet");
+        await this.petRepository.delete(id);
     }
     
 }

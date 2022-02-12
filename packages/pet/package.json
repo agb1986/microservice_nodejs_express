@@ -5,7 +5,7 @@
     "main": "dist/server.js",
     "scripts": {
         "start": "node dist/server.js",
-        "dev": "tsc && nodemon ./dist/pet/server.js"
+        "dev": "tsc && nodemon ./dist/pet/server.js -L"
     },
     "author": "",
     "license": "ISC",

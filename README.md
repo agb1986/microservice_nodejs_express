@@ -12,7 +12,7 @@ Store Image - `docker build -t store_image -f ./packages/store/docker/Dockerfile
 
 User Image - `docker build -t user_image -f ./packages/user/docker/Dockerfile .`
 
-Mongo Image - `docker build -t mongo_image -f ./packages/user/docker/Dockerfile .`
+Mongo Image - `docker build -t mongo -f ./data/Dockerfile .`
 
 ## Random JSON Data
 
