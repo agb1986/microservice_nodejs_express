@@ -29,8 +29,7 @@ class PetDatabase extends Core {
 }
 
 export const mongoDatabase = new PetDatabase({
-    host: 'mongo',
-    // host: 'localhost', //TODO: Add profile for debugging
+    host: process.env.MONGO_HOST,
     port: 27017,
     database: 'test'
 });

@@ -20,16 +20,24 @@ export class PetDao implements PetRepository {
         Logger.info('Getting Pets Data')
 
         const pets = await mongoDatabase.connect()
-            .then(() => mongoDatabase.Pets.find());
+            .then(() => mongoDatabase.Pets.find())
+            .catch(e => {
+                Logger.error('Unable to return Pets data: ', e);
+                throw e;
+            });
 
         Logger.info('Returning Pets Data')
-        return pets.toArray();
+        return pets!.toArray();
     }
     public async find(id: string): Promise<Pet> {
         Logger.info(`Getting Pet Data @ ${id}`)
 
         const pet = await mongoDatabase.connect()
-            .then(() => mongoDatabase.Pets.findOne(id));
+            .then(() => mongoDatabase.Pets.findOne(id))
+            .catch(e => {
+                Logger.error('Unable to return Pet data: ', e);
+                throw e;
+            });
 
         Logger.info(`Returning Pet Data @ ${pet}`)
         return pet?.toJSON();
@@ -39,6 +47,10 @@ export class PetDao implements PetRepository {
 
         const createdPet = await mongoDatabase.connect()
             .then(() => mongoDatabase.Pets.create(pet))
+            .catch(e => {
+                Logger.error('Unable to create Pet: ', e);
+                throw e;
+            });
 
         Logger.info(`Pet Data Created: ${createdPet}`)
     }
@@ -56,7 +68,11 @@ export class PetDao implements PetRepository {
                     instance!.document.tags = pet.tags;
 
                     return instance;
-                }));
+                }))
+            .catch(e => {
+                Logger.error('Unable to update Pet: ', e);
+                throw e;
+            });
         await updatedPet?.save();
     }
     public async delete(id: string): Promise<void> {
@@ -66,6 +82,10 @@ export class PetDao implements PetRepository {
             .then(() => mongoDatabase.Pets.findOne(id)
                 .then(async instance => {
                     await instance?.remove();
-                }));
+                }))
+            .catch(e => {
+                Logger.error('Unable to delete Pet: ', e);
+                throw e;
+            });
     }
 }

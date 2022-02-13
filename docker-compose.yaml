@@ -3,23 +3,29 @@ services:
         build: 
             context: .
             dockerfile: packages/pet/docker/Dockerfile
-        image: pet_image
+        image: pet
         ports:
             - 8001:8001
+        environment:
+            - MONGO_HOST=mongo
     store:
         build: 
             context: .
             dockerfile: packages/store/docker/Dockerfile
-        image: store_image
+        image: store
         ports:
             - 8002:8002
+        environment:
+            - MONGO_HOST=mongo
     user:
         build: 
             context: .
             dockerfile: packages/user/docker/Dockerfile
-        image: user_image
+        image: user
         ports:
             - 8003:8003
+        environment:
+            - MONGO_HOST=mongo
     mongo:
         build: 
             context: .
